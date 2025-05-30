@@ -3,12 +3,14 @@ from gemini.subject_extraction import extract_subject
 import torch
 import umap
 import pandas as pd
+from model.user_location import transform_loc
 
 model = SentenceTransformer('jhgan/ko-sroberta-sts')
 
-def get_query_embedding(text: str):
+def get_query_embedding(text: str, loc_json):
     extract_dept = extract_subject(text)
-    extract_dept= extract_dept + "성북구"
+    loc = transform_loc(loc_json)
+    extract_dept= extract_dept + loc
     query_embed = model.encode(extract_dept,convert_to_tensor=True)
     query_embed = query_embed.cpu()
     return query_embed
