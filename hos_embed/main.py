@@ -6,9 +6,8 @@ from gemini.subject_extraction import extract_subject
 from model.embeddings import compute_hospital_embed, load_or_create_embed
 from model.ranking_hospital import get_query_embedding, extract_hospital_rank_k, show_hospital_k
 from model.user_location import get_longi_latitude
-from sentence_transformers import SentenceTransformer
 
-ipstack_api_key = 'cad6f02dc60b41848aef057eeada31af'
+ipstack_api_key = "your ipstack api key"
 
 def main():
     ### ipstack 으로부터 유저의 위도 경도를 읻어올 수있다.
@@ -27,7 +26,7 @@ def main():
     hospital_info = pd.read_csv(hospital_info_path)
     
     embed_path = os.path.join(BASE_DIR,"cache","hospital_embeddings(sroberta-sts-normal,address0.2).pt")
-    
+    from sentence_transformers import SentenceTransformer
     model = SentenceTransformer("jhgan/ko-sroberta-sts")
     hospital_embed = load_or_create_embed(hospital_info, model, embed_path)
     

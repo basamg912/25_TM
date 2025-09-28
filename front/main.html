@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>증상 기반 병원 추천</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="centered-input">
+        <h2>무엇이 불편하신가요?</h2>
+        <div class="input-group">
+          <textarea id="symptomInput"
+                    placeholder="증상을 입력하세요"
+                    oninput="this.style.height = 'auto'; this.style.height = this.scrollHeight + 'px';"
+                    rows="1"></textarea>
+          <button id="submitBtn">→</button>
+        </div>
+        <div id="loading" class="loading hidden">⏳ 불러오는 중입니다...</div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="recommendation-box">
+        <h3><span class="emoji">➕</span> <span class="green">증상에 대한 추천</span></h3>
+
+        <div class="top-info">
+          <div class="info-card">
+            <span class="emoji">🩺</span> 진료과<br />
+            <span id="department"></span>
+          </div>
+          <div class="info-card">
+            <span class="emoji">💊</span> 예상 병명<br />
+            <span id="disease"></span>
+          </div>
+        </div>
+
+        <div class="hospital-section">
+          <b><span class="emoji">🏥</span> 추천 병원</b>
+          <div class="hospital-list" id="hospital-list">
+            <a href="https://map.kakao.com/link/to/서울삼성내과의원,37.5012743,127.039586" target="_blank" rel="noopener noreferrer" class="hospital-link">
+              <div class="hospital-card">
+                <strong></strong><br />
+                <div class="reviews">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://map.kakao.com/link/to/" target="_blank" rel="noopener noreferrer" class="hospital-link">
+              <div class="hospital-card">
+                <strong></strong><br />
+                <div class="reviews">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://map.kakao.com/link/to/" target="_blank" rel="noopener noreferrer" class="hospital-link">
+              <div class="hospital-card">
+                <strong></strong><br />
+                <div class="reviews">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="hospital-info-text">💡 병원 카드를 클릭하면 카카오맵에서 위치를 확인할 수 있습니다.</div>
+        </div>
+
+        <div class="medicine-box">
+          <span class="emoji">💊</span> <strong>추천 약</strong><br />
+          <ul id="medicine-list">
+          </ul>
+
+          <hr style="margin: 10px 0;" />
+
+          <span class="emoji">🚑</span> <strong>상비약</strong><br />
+          <label>
+            <input type="checkbox" id="hasMedicine" onchange="toggleMedicineInput()" />
+            보유 중인 상비약이 있습니다
+          </label>
+
+        <div id="medicine-input-area" class="hidden">
+          <input id="medicineInput" placeholder="예: 타이레놀" />
+          <button onclick="checkMedicine()">확인</button>
+          <div id="medicine-loading" class="hidden">⏳ 불러오는 중입니다...</div>
+        </div>
+
+        <div class="response" id="medicine-response">
+          💡 함께 복용을 피해야 할 약이 여기에 표시됩니다.
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

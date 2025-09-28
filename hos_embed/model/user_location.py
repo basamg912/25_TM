@@ -2,7 +2,7 @@ import requests
 import json
 from geopy.geocoders import Nominatim
 
-# ipstack 에서 user 의 위도 경도 얻어오기
+
 def get_longi_latitude(key):
     url = "https://api.ipstack.com/check?access_key="+key
     r = requests.get(url)

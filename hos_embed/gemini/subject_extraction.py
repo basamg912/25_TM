@@ -1,7 +1,8 @@
 from google import genai
 import os
 import re
-client = genai.Client(api_key="AIzaSyBpYsYKcIWG07aiHfdD1_JEhPhEXfh83lQ")
+api_key = "your gemini api key"
+client = genai.Client(api_key)
 def extract_subject(text: str) -> str:
     try:
         response = client.models.generate_content(
