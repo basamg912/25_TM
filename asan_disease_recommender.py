@@ -9,7 +9,7 @@ import requests
 # =======================
 # [1] 환경 변수/API KEY
 # =======================
-API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBBoNY6prPRJ5LzLLz7BcCzIzPG8HGEMnI")
+API_KEY = os.environ.get("GEMINI_API_KEY", "your api key")
 
 # =======================
 # [2] 데이터 로딩 함수
